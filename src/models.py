@@ -40,7 +40,7 @@ class Characters(Base):
     __tablename__ = 'character'
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
-    homeworld = Column(String(250), ForeignKey("planet.id"), nullable=False)
+    homeworld = Column(String(250), ForeignKey("planet.name"), nullable=False)
     birth_year = Column(Integer, nullable=False)
     height = Column(Integer, nullable=False)
     weight = Column(Integer, nullable=False)
