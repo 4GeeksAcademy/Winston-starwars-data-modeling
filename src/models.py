@@ -27,9 +27,9 @@ class Favorite(Base):
     id = Column(Integer, primary_key=True)
     #ForeignKey debe ser definida con el nombre de la tabla y el atributo a usar
     user_id = Column(Integer(), ForeignKey("user.id"), nullable=False)
-    favorite_characters = Column(String(250), ForeignKey("character.id"))
-    favorite_planets = Column(String(250), ForeignKey("planet.id"))
-    favorite_vehicles = Column(String(250), ForeignKey("vehicle.id"))
+    favorite_characters = Column(Integer, ForeignKey("character.id"))
+    favorite_planets = Column(Integer, ForeignKey("planet.id"))
+    favorite_vehicles = Column(Integer, ForeignKey("vehicle.id"))
     user = relationship("User", back_populates="favorites")
     character = relationship("Characters", back_populates="favorites")
     planet = relationship("Planets", back_populates="favorites")
@@ -40,7 +40,7 @@ class Characters(Base):
     __tablename__ = 'character'
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
-    homeworld = Column(String(250), ForeignKey("planet.name"), nullable=False)
+    homeworld = Column(Integer, ForeignKey("planet.id"), nullable=False)
     birth_year = Column(Integer, nullable=False)
     height = Column(Integer, nullable=False)
     weight = Column(Integer, nullable=False)
